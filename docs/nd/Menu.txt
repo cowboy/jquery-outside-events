@@ -46,12 +46,13 @@ Format: 1.4
 # --------------------------------------------------------------------------
 
 
-File: jQuery clickoutside event  (jquery.ba-clickoutside.js)
+File: jQuery outside events  (jquery.ba-outside-events.js)
 
 Group: Index  {
 
    Index: Everything
    Event Index: Events
    File Index: Files
+   Function Index: Functions
    }  # Group: Index
 

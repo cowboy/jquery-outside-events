@@ -2,9 +2,9 @@
 
 include "../index.php";
 
-$shell['title3'] = "clickoutside";
+$shell['title3'] = "mouseoveroutside";
 
-$shell['h2'] = 'Why click something, when you can click everything else?';
+$shell['h2'] = 'Why mouse-over something, when you can mouse-over everything else?';
 
 // ========================================================================== //
 // SCRIPT
@@ -19,21 +19,21 @@ $(function(){
   
   // Clear any previous highlights and text.
   $(document)
-    .bind( 'click', function(event){
+    .bind( 'mouseover', function(event){
       elems
         .removeClass( 'event-outside' )
         .children( '.event-target' )
           .text( ' ' );
     })
-    .trigger( 'click' );
+    .trigger( 'mouseover' );
   
-  // Bind the 'clickoutside' event to each test element.
-  elems.bind( 'clickoutside', function(event){
+  // Bind the 'mouseoveroutside' event to each test element.
+  elems.bind( 'mouseoveroutside', function(event){
     var elem = $(this),
       target = $(event.target),
       
       // Update the text to reference the event.target element.
-      text = 'Clicked: ' + target[0].tagName.toLowerCase()
+      text = 'Mouse-over: ' + target[0].tagName.toLowerCase()
         + ( target.attr('id') ? '#' + target.attr('id')
           : target.attr('class') ? '.' + target.attr('class').replace( / /g, '.' )
           : ' ' );
@@ -139,9 +139,9 @@ ob_start();
   You get the idea, right?
 </p>
 
-<h2>The clickoutside event, bound to a few elements</h2>
+<h2>The mouseoveroutside event, bound to a few elements</h2>
 
-<p>Just click around, and see for yourself!</p>
+<p>Just mouse around, and see for yourself!</p>
 
 <div id="test">
   test <span class="event-target"></span>

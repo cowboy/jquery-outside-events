@@ -2,9 +2,9 @@
 
 include "../index.php";
 
-$shell['title3'] = "clickoutside";
+$shell['title3'] = "focusoutside";
 
-$shell['h2'] = 'Why click something, when you can click everything else?';
+$shell['h2'] = 'Why focus something, when you can.. Um, nevermind.';
 
 // ========================================================================== //
 // SCRIPT
@@ -19,21 +19,21 @@ $(function(){
   
   // Clear any previous highlights and text.
   $(document)
-    .bind( 'click', function(event){
+    .bind( 'focusin', function(event){
       elems
         .removeClass( 'event-outside' )
         .children( '.event-target' )
           .text( ' ' );
     })
-    .trigger( 'click' );
+    .trigger( 'focusin' );
   
-  // Bind the 'clickoutside' event to each test element.
-  elems.bind( 'clickoutside', function(event){
+  // Bind the 'focusoutside' event to each test element.
+  elems.bind( 'focusoutside', function(event){
     var elem = $(this),
       target = $(event.target),
       
       // Update the text to reference the event.target element.
-      text = 'Clicked: ' + target[0].tagName.toLowerCase()
+      text = 'Focused: ' + target[0].tagName.toLowerCase()
         + ( target.attr('id') ? '#' + target.attr('id')
           : target.attr('class') ? '.' + target.attr('class').replace( / /g, '.' )
           : ' ' );
@@ -91,10 +91,10 @@ lt. brown: #C4884F
 }
 
 #test .bind-me {
-  padding: 0 0.5em;
+  padding: 0.5em;
   margin-left: 0.5em;
   white-space: nowrap;
-  line-height: 1.6em;
+  line-height: 1.5em;
 }
 
 #test,
@@ -110,13 +110,25 @@ lt. brown: #C4884F
   background-color: #cfc !important;
 }
 
+input.outside,
+#test input {
+  font-size: 10px;
+  border: 1px solid #000;
+  padding: 0.1em 0.3em;
+  width: 50px;
+}
+
 #test .bind-me,
 .event-target {
   display: inline-block;
-  width: 180px;
+  width: 130px;
   overflow: hidden;
   white-space: pre;
   vertical-align: middle;
+}
+
+#test .bind-me {
+  width: 180px;
 }
 
 </style>
@@ -139,32 +151,40 @@ ob_start();
   You get the idea, right?
 </p>
 
-<h2>The clickoutside event, bound to a few elements</h2>
+<h2>The focusoutside event, bound to a few elements</h2>
 
-<p>Just click around, and see for yourself!</p>
+<p>Just focus some inputs, and see for yourself!</p>
+
+<input type="text" class="outside" value="outside" id="outside">
 
 <div id="test">
-  test <span class="event-target"></span>
+  <input type="text" value="top" id="top">
+  <span class="event-target"></span>
   
-  <div id="a">
-      a <span class="event-target"></span>
+  <div>
+      <input type="text" value="a" id="a">
+      <span class="event-target"></span>
       <div id="b">
-          b <span class="event-target"></span>
+          <input type="text" value="b" id="b">
+          <span class="event-target"></span>
       </div>
   </div>
   
-  <div id="c">
-      c <span class="event-target"></span>
-      <span id="d" class="bind-me">d <span class="event-target"></span> </span>
-      <span id="e" class="bind-me">e <span class="event-target"></span> </span>
+  <div>
+      <input type="text" value="c" id="c">
+      <span class="event-target"></span>
+      <span class="bind-me"><input type="text" value="d" id="d"> <span class="event-target"></span> </span>
+      <span class="bind-me"><input type="text" value="e" id="e"> <span class="event-target"></span> </span>
   </div>
   
-  <div id="f">
-      f <span class="event-target"></span>
-      <div id="g">
-          g <span class="event-target"></span>
-          <span id="h" class="bind-me">h <span class="event-target"></span> </span>
-          <span id="i" class="bind-me">i <span class="event-target"></span> </span>
+  <div>
+      <input type="text" value="f" id="f">
+      <span class="event-target"></span>
+      <div>
+          <input type="text" value="g" id="g">
+          <span class="event-target"></span>
+          <span class="bind-me"><input type="text" value="h" id="h"> <span class="event-target"></span> </span>
+          <span class="bind-me"><input type="text" value="i" id="i"> <span class="event-target"></span> </span>
       </div>
   </div>
 </div>
