@@ -1,0 +1,8 @@
+{
+  "name": "jquery-outside-events",
+  "version": "1.1.0",
+  "main": "./jquery.ba-outside-events.js",
+  "dependencies": {
+    "jquery": "~1.4.2"
+  }
+}
