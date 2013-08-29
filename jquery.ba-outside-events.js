@@ -122,7 +122,7 @@
     
     // A jQuery object containing all elements to which the "outside" event is
     // bound.
-    var elems = $(),
+    var elems = [],
       
       // The "originating" event, namespaced for easy unbinding.
       event_namespaced = event_name + '.' + outside_event_name + '-special-event';
@@ -165,7 +165,7 @@
         
         // Add this element to the list of elements to which this "outside"
         // event is bound.
-        elems = elems.add( this );
+        elems.push( this );
         
         // If this is the first element getting the event bound, bind a handler
         // to document to catch all corresponding "originating" events.
@@ -177,10 +177,13 @@
       // Called only when the last "outside" event callback is unbound per
       // element.
       teardown: function(){
+        var index;
         
         // Remove this element from the list of elements to which this
         // "outside" event is bound.
-        elems = elems.not( this );
+        if ( -1 !== ( index = $.inArray( this, elems ) ) ) {
+          elems.splice( index, 1 );
+        }
         
         // If this is the last element removed, remove the "originating" event
         // handler on document that powers this "outside" event.
@@ -213,7 +216,7 @@
     function handle_event( event ) {
       
       // Iterate over all elements to which this "outside" event is bound.
-      $(elems).each(function(){
+      $.each( elems, function(){
         var elem = $(this);
         
         // If this element isn't the element on which the event was triggered,
