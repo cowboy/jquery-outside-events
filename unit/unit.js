@@ -22,6 +22,9 @@ var events = [
   { outside: 'changeoutside',     originating: 'change' },
   { outside: 'selectoutside',     originating: 'select' },
   { outside: 'submitoutside',     originating: 'submit' },
+  { outside: 'touchstartoutside',     originating: 'touchstart' },
+  { outside: 'touchendoutside',     originating: 'touchend' },
+  { outside: 'touchmoveoutside',     originating: 'touchmove' },
   
   // A custom "outside" event.
   { outside: 'super-duper-awesome-outside', originating: 'omg-ponies' }
