@@ -1,5 +1,5 @@
 /*!
- * jQuery outside events - v1.1 - 3/16/2010
+ * jQuery outside events - v1.2 - 3/16/2010
  * http://benalman.com/projects/jquery-outside-events-plugin/
  * 
  * Copyright (c) 2010 "Cowboy" Ben Alman
@@ -9,6 +9,7 @@
 
 // Script: jQuery outside events
 //
+// *Version: 1.2, Last updated: 3/31/2016*
 // *Version: 1.1, Last updated: 3/16/2010*
 // 
 // Project Home - http://benalman.com/projects/jquery-outside-events-plugin/
@@ -44,6 +45,7 @@
 // 
 // About: Release History
 // 
+// 1.2 - Use "elems" variable as pure JS array and not jQuery array to avoid memory leak when invoking the "not" method on it
 // 1.1 - (3/16/2010) Made "clickoutside" plugin more general, resulting in a
 //       whole new plugin with more than a dozen default "outside" events and
 //       a method that can be used to add new ones.
@@ -122,7 +124,7 @@
     
     // A jQuery object containing all elements to which the "outside" event is
     // bound.
-    var elems = $(),
+    var elems = new Array(),
       
       // The "originating" event, namespaced for easy unbinding.
       event_namespaced = event_name + '.' + outside_event_name + '-special-event';
@@ -165,12 +167,12 @@
         
         // Add this element to the list of elements to which this "outside"
         // event is bound.
-        elems = elems.add( this );
+        elems.push( this );
         
         // If this is the first element getting the event bound, bind a handler
         // to document to catch all corresponding "originating" events.
         if ( elems.length === 1 ) {
-          $(doc).bind( event_namespaced, handle_event );
+          $(doc).on( event_namespaced, handle_event );
         }
       },
       
@@ -180,12 +182,15 @@
         
         // Remove this element from the list of elements to which this
         // "outside" event is bound.
-        elems = elems.not( this );
+        var elemIndex = $.inArray(this, elems);
+        if ( elemIndex  !==  -1 ) {
+          elems.splice( elemIndex, 1 );
+        }
         
         // If this is the last element removed, remove the "originating" event
         // handler on document that powers this "outside" event.
         if ( elems.length === 0 ) {
-          $(doc).unbind( event_namespaced );
+          $(doc).off( event_namespaced );
         }
       },
       
