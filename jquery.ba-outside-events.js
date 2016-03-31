@@ -1,5 +1,5 @@
 /*!
- * jQuery outside events - v1.2 - 3/16/2010
+ * jQuery outside events - v1.2 - 3/31/2016
  * http://benalman.com/projects/jquery-outside-events-plugin/
  * 
  * Copyright (c) 2010 "Cowboy" Ben Alman
@@ -9,7 +9,7 @@
 
 // Script: jQuery outside events
 //
-// *Version: 1.2, Last updated: 3/31/2016*
+// *Version: 1.2, Last updated: 3/31/2016, By: TomerSH17*
 // *Version: 1.1, Last updated: 3/16/2010*
 // 
 // Project Home - http://benalman.com/projects/jquery-outside-events-plugin/
