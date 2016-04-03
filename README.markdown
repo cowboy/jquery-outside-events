@@ -44,6 +44,7 @@ Internet Explorer 6-8, Firefox 2-3.6, Safari 3-4, Chrome, Opera 9.6-10.1.
 
 ## Release History ##
 
+1.2 - (3/31/2016) Remove jQuery array and use pure JS array in order to avoid the memory leak that exists in "not" method when the jQuery array is used.
 1.1 - (3/16/2010) Made "clickoutside" plugin more general, resulting in a whole new plugin with more than a dozen default "outside" events and a method that can be used to add new ones.  
 1.0 - (2/27/2010) Initial release  
 
