@@ -1,6 +1,6 @@
 /*!
  * jQuery outside events - v1.2 - 3/31/2016
- * http://benalman.com/projects/jquery-outside-events-plugin/
+ * https://github.com/TomerSH17/jquery-outside-events
  * 
  * Copyright (c) 2010 "Cowboy" Ben Alman
  * Dual licensed under the MIT and GPL licenses.
