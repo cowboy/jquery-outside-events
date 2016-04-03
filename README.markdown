@@ -1,6 +1,9 @@
 # jQuery outside events #
 [http://benalman.com/projects/jquery-outside-events-plugin/](http://benalman.com/projects/jquery-outside-events-plugin/)
 
+Version: 1.2, Last updated: 3/31/2016, By: TomerSH17
+Remove jQuery array and use pure JS array in order to avoid the memory leak that exists in "not" method when the jQuery array is used
+
 Version: 1.1, Last updated: 3/16/2010
 
 With jQuery outside events you can bind to an event that will be triggered only when a specific "originating" event occurs *outside* the element in question. For example, you can click outside, double-click outside, mouse-over outside, focus outside (and over ten more default "outside" events). Also, if an outside event hasn't been provided by default, you can easily define your own.
